@@ -2,10 +2,13 @@
 require_once "modeles/gites.php";
 require_once "modeles/Categories.php";
 require_once "modeles/departement.php";
+require_once "modeles/commentaires.php";
+
 
 $giteClasse = new Gites();
 $categorieClasse = new Categories();
 $regionClasse = new Regions();
+$commentaireClasse = new Commentaires();
 
 
 $details = $giteClasse->getGiteById();
@@ -208,5 +211,65 @@ $commentaires = $commentaireClasse->getComments();
     }
     ?>
 </div>
+
+<?php
+
+?>
+<!--ON AFFICHE LES COMMENTAIRES -->
+<div class="mt-3 container">
+    <h4 class="text-success">COMMENTAIRES</h4>
+    <ul class="list-group">
+        <?php
+        foreach ($commentaires as $alias) {
+
+                ?>
+
+                <li class="list-group-item">
+                <li class="list-group-item">Nom de l'auteur : <b
+                            class="text-info"><?= $alias['auteur_commentaire'] ?></b></li>
+                <li class="list-group-item">Commentaire de l'auteur : <b
+                            class="text-info"><?= $alias['contenu_commentaire'] ?></b></li>
+
+                <?php
+
+        }
+        ?>
+    </ul>
+</div>
+
+
+<script>
+    /////////////////////////////UPDATE FORM TOGGLE///////////////////
+    //Au clic sur le bouton update : on passe du formulaire au details du gites
+
+
+    let btnUpdateGite = document.getElementById("bntUpdate");
+    let updateForm = document.getElementById("update-form");
+    let blockGiteID = document.getElementById("gite-by-id");
+
+    btnUpdateGite.addEventListener("click", () => {
+        console.log("test de click");
+        updateForm.classList.toggle("show");
+        blockGiteID.classList.toggle("show");
+
+        //element.classList.contains(className);
+
+        //Si le formulaire possède la classe css .show
+        //On change la couleur du bouton + le texte
+        //Sinon l'inverse
+
+        if (updateForm.classList.contains("show")) {
+            btnUpdateGite.style.backgroundColor = "#789456";
+            btnUpdateGite.style.border = "none";
+            btnUpdateGite.innerHTML = "AFFICHER LE DETAILS";
+        } else {
+            btnUpdateGite.style.backgroundColor = "orange"
+            btnUpdateGite.innerHTML = "AFFICHER LE FORMULAIRE";
+            btnUpdateGite.style.border = "none";
+        }
+    })
+</script>
+
+
 
 

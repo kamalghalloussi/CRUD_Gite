@@ -93,6 +93,8 @@
 								<ul class="nav navbar-nav navbar-right">
 									<li class="smooth-menu"><a href="#home">accueil</a></li>
 									<li class="smooth-menu"><a href="#pack"> les gites </a></li>
+									<li class="smooth-menu"><a href="../vues/administration.php"> administration</a></li>
+
 									<li>
 									<a class="book-btn" href="inscription">INSCRIPTION</a>
 									</li>
